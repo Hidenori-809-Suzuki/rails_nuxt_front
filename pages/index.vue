@@ -2,9 +2,11 @@
   <v-app>
     <home-app-bar
       :menus="menus"
+      :img-height="imgHeight"
     />
 
     <v-img
+      id="scroll-top"
       dark
       src="https://picsum.photos/id/20/1920/1080?blur=5"
       gradient="to top right, rgba(19,84,122,.6), rgba(128,208,199,.9)"
@@ -41,7 +43,10 @@
           v-for="(menu, i) in menus"
           :key="`menu-${i}`"
         >
-          <v-col cols="12">
+          <v-col
+            :id="menu.title"
+            cols="12"
+          >
             <v-card flat>
               <v-card-title class="justify-center display-1">
                 {{ $t(`menus.${menu.title}`) }}
@@ -52,7 +57,9 @@
             </v-card>
           </v-col>
           <v-col cols="12">
-            <div :is="`home-${menu.title}`" />
+            <div
+              :is="`home-${menu.title}`"
+            />
           </v-col>
         </v-row>
       </v-container>
