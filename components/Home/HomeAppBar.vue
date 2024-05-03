@@ -9,11 +9,9 @@
     <app-logo
       @click.native="$vuetify.goTo('#scroll-top')"
     />
-    <v-toolbar-title
+    <app-title
       class="hidden-mobile-and-down"
-    >
-      {{ appName }}
-    </v-toolbar-title>
+    />
 
     <v-spacer />
 
@@ -82,7 +80,6 @@ export default {
   },
   data () {
     return {
-      appName: null,
       scrollY: 0,
       homeAppBarHeight: 0
     }
@@ -96,9 +93,6 @@ export default {
       const elevation = this.isScrollPoint ? 4 : 0
       return { color, elevation }
     }
-  },
-  created () {
-    this.appName = this.$config.appName
   },
   mounted () {
     window.addEventListener('scroll', this.onScroll)
