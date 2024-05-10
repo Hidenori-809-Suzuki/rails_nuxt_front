@@ -33,7 +33,11 @@
       >
         <div v-icon="nav.icon" />
         <v-list-item-icon>
-          <v-icon>{{ nav.icon }}</v-icon>
+          <v-icon
+            class="pr-4"
+          >
+            {{ nav.icon }}
+          </v-icon>
         </v-list-item-icon>
 
         <v-list-item-content>
