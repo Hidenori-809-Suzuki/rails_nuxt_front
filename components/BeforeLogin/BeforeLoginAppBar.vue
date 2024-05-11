@@ -15,6 +15,8 @@
       class="hidden-mobile-and-down"
     />
 
+    <!-- <logged-in-app-bar-breadcrumbs /> -->
+
     <v-spacer />
 
     <before-login-app-bar-signup-button />
