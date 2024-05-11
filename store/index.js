@@ -26,9 +26,16 @@ export const getters = {
 }
 
 export const mutations = {
-
+  setCurrentProject (state, payload) {
+    state.project.current = payload
+  }
 }
 
 export const actions = {
-
+  getCurrentProject ({ state, commit }, params) {
+    const id = Number(params.id)
+    const currentProject =
+      state.project.list.find(project => project.id === id) || null
+    commit('setCurrentProject', currentProject)
+  }
 }
