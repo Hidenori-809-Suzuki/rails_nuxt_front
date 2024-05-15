@@ -9,10 +9,10 @@
         @submit.prevent="login"
       >
         <user-form-email
-          :email.sync="params.user.email"
+          :email.sync="params.auth.email"
         />
         <user-form-password
-          :password.sync="params.user.password"
+          :password.sync="params.auth.password"
         />
         <v-card-actions>
           <nuxt-link
@@ -49,14 +49,31 @@ export default {
     return {
       isValid: false,
       loading: false,
-      params: { user: { email: '', password: '' } },
+      // 開発環境ではログインしやすくするためにemailとpasswordに値を記載
+      // TODO 本番環境では削除する
+      params: { auth: { email: 'user0@example.com', password: 'password' } },
       redirectPath: $store.state.loggedIn.homePath
     }
   },
   methods: {
-    login () {
+    async login () {
       this.loading = true
+      if (this.isValid) {
+        await this.$axios.$post('/api/v1/auth_token', this.params)
+          .then(response => this.authSuccessful(response))
+          .catch(error => this.authFailure(error))
+      }
+      this.loading = false
+    },
+    authSuccessful (response) {
+      console.log('authSuccessful', response)
       this.$router.push(this.redirectPath)
+    },
+    authFailure ({ response }) {
+      if (response && response.status === 404) {
+        // TODO
+      }
+      // TODO
     }
   }
 }

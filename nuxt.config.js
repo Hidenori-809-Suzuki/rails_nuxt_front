@@ -58,7 +58,8 @@ export default {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     // 環境変数API_URLが優先される
     // baseURL: '/'
-    proxy: true
+    proxy: true,
+    credentials: true
   },
 
   vuetify: {
@@ -98,9 +99,9 @@ export default {
 
   proxy: {
     '/api': {
-      target: 'http://localhost:3000',
+      target: 'http://api:3000',
       pathRewrite: {
-        '^/api': '/api/v1'
+        '^/api': '/api'
       }
     }
   },
