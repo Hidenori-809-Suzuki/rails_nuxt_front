@@ -54,9 +54,11 @@ export const actions = {
     commit('serProjectList', projects)
   },
   getCurrentProject ({ state, commit }, params) {
-    const id = Number(params.id)
-    const currentProject =
-      state.project.list.find(project => project.id === id) || null
+    let currentProject = null
+    if (params && params.id) {
+      const id = Number(params.id)
+      currentProject = state.project.list.find(project => project.id === id) || null
+    }
     commit('setCurrentProject', currentProject)
   },
   getCurrentUser ({ commit }, user) {
