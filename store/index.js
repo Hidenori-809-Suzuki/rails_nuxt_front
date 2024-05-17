@@ -51,7 +51,7 @@ export const mutations = {
 export const actions = {
   getProjectList ({ commit }, projects) {
     projects = projects || []
-    commit('serProjectList', projects)
+    commit('setProjectList', projects)
   },
   getCurrentProject ({ state, commit }, params) {
     let currentProject = null

@@ -28,7 +28,8 @@ export default {
   plugins: [
     'plugins/auth',
     'plugins/axios',
-    'plugins/my-inject'
+    'plugins/my-inject',
+    'plugins/nuxt-client-init'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -52,6 +53,10 @@ export default {
 
   publicRuntimeConfig: {
     appName: process.env.APP_NAME
+  },
+
+  router: {
+    middleware: ['silent-refresh-token']
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
