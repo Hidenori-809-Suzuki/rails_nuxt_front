@@ -24,7 +24,7 @@
 import LoggedInAppBar from '../components/LoggedIn/LoggedInAppBar.vue'
 export default {
   components: { LoggedInAppBar },
-  middleware: ['get-project-list', 'get-project-current'],
+  middleware: ['authentication', 'get-project-list', 'get-project-current'],
   data () {
     return {
       drawer: null
